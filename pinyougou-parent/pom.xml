@@ -22,6 +22,7 @@
         <module>pinyougou-web-portal</module>
         <module>pinyougou-web-shop</module>
         <module>pinyougou-web-user</module>
+        <module>pinyougou-seckill-interface</module>
     </modules>
 
     <!-- 集中定义依赖版本号 -->

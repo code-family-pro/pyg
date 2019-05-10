@@ -198,25 +198,19 @@ public class GoodsServiceImpl implements GoodsService{
     public void updateStatus(Long[] ids, String status) {
 
         Goods goods = new Goods();
-
         goods.setAuditStatus(status);
 
         for (Long id : ids) {
             goods.setId(id);
             goodsDao.updateByPrimaryKeySelective(goods);
             if ("1".equals(status)){
-
                 jmsTemplate.send(topicPageAndSolrDestination, new MessageCreator() {
                     @Override
                     public Message createMessage(Session session) throws JMSException {
                         return session.createTextMessage(String.valueOf(id));
                     }
                 });
-
-
-
             }
-
         }
     }
 
